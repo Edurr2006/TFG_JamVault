@@ -5,10 +5,17 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Falta parámetro 'url'" });
   }
 
+  // 🔒 Seguridad: solo permitir Songsterr
+  if (!url.startsWith("https://www.songsterr.com/")) {
+    return res.status(400).json({ error: "Solo se permite Songsterr" });
+  }
+
   try {
     const response = await fetch(url);
-    const contentType = response.headers.get("content-type");
-    res.setHeader("Content-Type", contentType || "application/json");
+    const contentType = response.headers.get("content-type") || "application/json";
+    res.setHeader("Content-Type", contentType);
+    res.setHeader("Access-Control-Allow-Origin", "*"); // ✅ Permite acceso desde tu front
+    res.setHeader("Access-Control-Allow-Methods", "GET");
 
     const body = await response.text();
     res.status(response.status).send(body);
