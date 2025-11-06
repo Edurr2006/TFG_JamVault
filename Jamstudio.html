@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio | JamVault</title>
+  <link rel="stylesheet" href="IndexStyles.css">
+  <link rel="stylesheet" href="Studio.css">
+</head>
+<body class="JamVault">
+  <header class="studio-header">
+    <div class="logo-title">
+      <img src="imagenes/logo.png" alt="Logo" class="Logo">
+      <div class="title-logo"><h1>JamVault Studio</h1></div>
+    </div>
+    <div class="studio-controls">
+      <button id="btnPlay" class="btn">Play</button>
+      <button id="btnStop" class="btn">Stop</button>
+      <span id="timeDisplay">00:00 / 03:30</span>
+      <select id="tempoSelect" class="btn">
+        <option>90 BPM</option>
+        <option>100 BPM</option>
+        <option>120 BPM</option>
+        <option>140 BPM</option>
+      </select>
+      <button id="toggleTheme" class="btn">Cambiar Tema</button>
+    </div>
+  </header>
+
+  <main class="studio-main">
+    <aside class="track-list">
+      <div class="track" data-track-id="1">
+        <span class="track-label">Voz</span>
+        <button class="btn mute">Mute</button>
+        <button class="btn solo">Solo</button>
+      </div>
+      <div class="track" data-track-id="2">
+        <span class="track-label">Guitarra</span>
+        <button class="btn mute">Mute</button>
+        <button class="btn solo">Solo</button>
+      </div>
+      <!-- más pistas -->
+      <button id="addTrack" class="btn">+ Añadir pista</button>
+    </aside>
+
+    <section class="timeline">
+      <div class="ruler">
+        <!-- marcas de tiempo: 1, 2, 3, 4, … -->
+      </div>
+      <div class="tracks-area">
+        <!-- aquí se colocan los clips / regiones de audio / MIDI para cada pista -->
+        <div class="track-row" data-track-id="1">
+          <!-- regiones dentro de esta fila -->
+        </div>
+        <div class="track-row" data-track-id="2">
+          <!-- regiones -->
+        </div>
+      </div>
+    </section>
+
+    <aside class="mixer-panel">
+      <div class="mixer-track" data-track-id="1">
+        <label>Voz</label>
+        <input type="range" min="0" max="1" step="0.01" class="volume-fader">
+        <button class="btn fx">Fx</button>
+      </div>
+      <div class="mixer-track" data-track-id="2">
+        <label>Guitarra</label>
+        <input type="range" min="0" max="1" step="0.01" class="volume-fader">
+        <button class="btn fx">Fx</button>
+      </div>
+      <!-- más controles de mezcla -->
+    </aside>
+  </main>
+
+  <script src="Studio.js"></script>
+  <script src="LocalStorage.js"></script>
+</body>
+</html>
